@@ -1,0 +1,53 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<head>
+    <style>
+       
+    </style>
+</head>
+<h3>Booking Confirmation</h3>
+<form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    <h2>Your booking has been confirmed</h2>
+    <h3>Thank you, Have a safe journey</h3>
+    <h3>Bill details</h3>
+
+    <button type="button" data-toggle="modal" data-target="#myModal">Bill details</button>
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Billing details</h4>
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+
+                </div>
+
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Bus name:</b>{{book.bus_name}}</li>
+
+                        <li class="list-group-item"><b>Source:</b>{{book.source}}</li>
+                        <li class="list-group-item"><b>Destination:</b>{{book.dest}}</li>
+                        <li class="list-group-item"><b>No of seats:</b>{{book.nos}}</li>
+                        <li class="list-group-item"><b>Price:</b>{{book.price}}</li>
+                        <li class="list-group-item"><b>Cost:</b>{{cost}}</li>
+                        <li class="list-group-item"><b>Date:</b>{{book.date}}</li>
+                        <li class="list-group-item"><b>Time:</b>{{book.time}}</li>
+
+                    </ul>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+{% endblock %}

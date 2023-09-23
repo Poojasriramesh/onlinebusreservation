@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<head>
+    <style>
+       
+    </style>
+</head>
+<h3>Wlecome to Rebbus</h3>
+
+
+<form method="POST" action="{% url 'signin' %}">
+    <h3>Signin page</h3>
+    {% csrf_token %}
+    
+    <label for="">UserName</label>
+    <div>
+        <input type="text" name="name" >
+    </div>
+    <label for="">Password</label>
+    <div>
+        <input type="password" name="password" >
+    </div>
+
+    <br>
+    <button type="submit">Signin</button>
+
+    <p>New to Redbus, Register here<a href="{% url 'signup' %}">Register</a></p>
+</form>
+<p>{{error}}</p>
+
+
+{% endblock %}

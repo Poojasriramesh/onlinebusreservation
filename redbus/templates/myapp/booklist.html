@@ -1,0 +1,74 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        table{
+            width: 100%;
+        }
+        thead,tr,td{
+            border: 2px solid rgb(17, 0, 255);
+        }
+        thead{
+            background-color: hotpink;
+        }
+        form{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<h3>Booked Tickets</h3>
+<table>
+    <thead>
+        <td>Booking ID</td>
+        <td>User Name</td>
+        <td>Bus Name</td>
+        <td>Source</td>
+        <td>Destination</td>
+        <td>No of seats</td>
+        <td>Price</td>
+        <td>Date</td>
+        <td>time</td>
+        <td>status</td>
+    </thead>
+     
+    {% for row in book_list%}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.bus_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.nos}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+        <td>{{row.status}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+<form method="POST" action="{% url 'cancellings' %}">
+    <h3>Choose bus to Cancel</h3>
+    {% csrf_token %}
+    <label for="">Bus Id</label>
+    <div>
+        <input type="number" name="bus_id" >
+    </div>
+    
+    <br>
+    <button type="submit">Cancel bus</button>
+
+    {{error}}
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

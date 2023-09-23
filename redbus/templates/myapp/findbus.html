@@ -1,0 +1,45 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<head>
+    <style>
+    form{
+        margin-top: 45px;
+    }
+    label{
+        color: red;
+    }
+    input{
+       border-color: blue;
+        width: 400px;
+    }
+    </style>
+    
+</head>
+<br>
+
+<div class="container">
+    <div class="row">
+        <h2>Find Bus</h2><br><br>
+        <form action="{% url 'findbus' %}" method="POST">
+            {% csrf_token %}
+            <label for="">Source</label>
+            <div class="col-5">
+                <input type="text" name="source" >
+            </div>
+            <label for="">Destination</label>
+            <div class="col-5">
+                <input type="text" name="destination" >
+            </div>
+
+            <label for="">Date</label>
+            <div class="col-5">
+                <input type="date" name="date" >
+            </div>
+            <br>
+            <button type="submit">Find bus</button>
+            {{error}}
+        </form>
+
+    </div>
+</div>
+{% endblock %}

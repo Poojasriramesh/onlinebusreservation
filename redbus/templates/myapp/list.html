@@ -1,0 +1,74 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        table{
+            width: 100%;
+        }
+        thead,tr,td{
+            border: 2px solid rgb(17, 0, 255);
+        }
+        thead{
+            background-color: hotpink;
+        }
+        form{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<h3>List of Buses</h3>
+<table>
+    <thead>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Source</td>
+        <td>Destination</td>
+        <td>No of seats</td>
+        <td>No of seat Ream</td>
+        <td>Price</td>
+        <td>Date</td>
+        <td>time</td>
+    </thead>
+     
+    {% for row in bus_list %}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.bus_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.nos}}</td>
+        <td>{{row.rem}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form method="POST" action="{% url 'bookings' %}">
+    <h3>Choose bus to Book</h3>
+    {% csrf_token %}
+    <label for="">Bus Id</label>
+    <div>
+        <input type="number" name="bus_id" >
+    </div>
+    <label for="">Number of seats</label>
+    <div>
+        <input type="number" name="no_seats" >
+    </div>
+    <br>
+    <button type="submit">Book bus</button>
+
+    {{error}}
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

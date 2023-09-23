@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<head>
+    <style>
+       
+    </style>
+</head>
+<h3>Wlecome to Rebbus</h3>
+
+
+<form method="POST" action="{% url 'signout' %}">
+   
+    {% csrf_token %}
+    {{user}}Successful login!
+
+      <br>
+    <button type="submit">Signout</button>
+
+    
+</form>
+
+
+
+{% endblock %}

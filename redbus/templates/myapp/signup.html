@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<head>
+    <style>
+       
+    </style>
+</head>
+<h3>Signup page</h3>
+
+
+<form method="POST" action="{% url 'signup' %}">
+    <h3>Signup page</h3>
+    {% csrf_token %}
+    <label for="">Email</label>
+    <div>
+        <input type="text" name="email" >
+    </div>
+    <label for="">UserName</label>
+    <div>
+        <input type="text" name="name" >
+    </div>
+    <label for="">Password</label>
+    <div>
+        <input type="password" name="password" >
+    </div>
+
+    <br>
+    <button type="submit">Signup</button>
+
+    
+</form>
+
+{{error}}
+
+
+
+
+
+
+
+
+{% endblock %}
